@@ -50,12 +50,6 @@ document.getElementById('output-3').innerHTML = winner;
  *      2.3 SE l'email non è nella lista ==> stampare messaggio 'Non puoi accedere; per accedere inserire un'email valida'.
  */
 
-// 1.
-
-const userEmail = document.getElementById('mail');
-
-console.log(userEmail.value);
-
 // 2.1
 
 const emailList = [
@@ -70,3 +64,32 @@ const emailList = [
     'guardians.galaxy@gmail.com',
     'vision.ultron@gmail.com',
 ]
+
+// 2.2
+
+const button = document.querySelector('a.btn');
+
+button.addEventListener('click', function(){
+
+    const userEmail = document.getElementById('mail').value;
+    console.log(userEmail);
+
+    let find = false;
+
+    for ( i = 0; i < emailList.length; i++ ) {
+
+        if (userEmail == emailList[i]){
+            find = true;
+        }
+    }
+
+    let message;
+
+    if (find){
+        message = 'La tua email è nella lista: puoi accedere.';
+    } else {
+        message = 'La tua email non è nella lista: bye bye!';
+    }
+
+    document.getElementById('output-mail').innerHTML = message;
+});
